@@ -1,4 +1,4 @@
-# Simple WPF localization with multiple Resource.resx files used for one language.
+# WPF localization with multiple Resource.resx files (resource managers) used for one language.
 
 If you only want to localize text and you find the [WPF Localization Extension](https://github.com/XAMLMarkupExtensions/WPFLocalizationExtension) too large for your needs, you can use this as a "one file" alternative that can localize strings (but not images).
 
@@ -27,14 +27,16 @@ The markup extension is still used in the same way:
 A new attached property Translation.ResourceManager is used with the root control of the visual tree (e.g. UserControl) to set the ResourceManager for the localization markup extension:
 
     <UserControl xmlns:resx="clr-namespace:MyProject.Properties"
-                 xmlns:loc="clr-namespace:WpfLocalizationMultipleResourceResxOneLanguage"
+                 xmlns:loc="clr-namespace:WpfLocalizationWithMultipleResourceManagers"
                  loc:Translation.ResourceManager="{x:Static resx:Resources.ResourceManager}">
         <TextBlock Text="{loc:Loc MyText}"/>
     </UserControl>
 
-If you want to use a different ResourceManager with a specific control, you can override the root setting at the control level:
+If you want to use a different ResourceManager with a specific control you can override the root setting at the control level:
 
     <TextBox loc:Translation.ResourceManager="{x:Static resx:Resources.ResourceManager}" Text="{loc:Loc MyText}"/>
+
+If you want to use the markup extension inside a control template you have to set the Translation.ResourceManager attached property on the TemplatedParent.
 
 ## If you use this solution in a separate class library
 
