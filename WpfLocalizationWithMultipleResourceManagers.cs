@@ -21,9 +21,10 @@ namespace WpfLocalizationWithMultipleResourceManagers
             get
             {
                 var (baseName, stringName) = SplitName(key);
+                string translation = null;
                 if (resourceManagerDictionary.ContainsKey(baseName))
-                    return resourceManagerDictionary[baseName].GetString(stringName, currentCulture);
-                return key;
+                    translation = resourceManagerDictionary[baseName].GetString(stringName, currentCulture);
+                return translation ?? key;
             }
         }
 
