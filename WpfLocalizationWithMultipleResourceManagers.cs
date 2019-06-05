@@ -28,7 +28,7 @@ namespace WpfLocalizationWithMultipleResourceManagers
             }
         }
 
-        private CultureInfo currentCulture = null;
+        private CultureInfo currentCulture = CultureInfo.InstalledUICulture;
         public CultureInfo CurrentCulture
         {
             get { return currentCulture; }
