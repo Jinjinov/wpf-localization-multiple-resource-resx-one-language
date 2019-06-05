@@ -112,7 +112,7 @@ namespace WpfLocalizationWithMultipleResourceManagers
             // targetObject is the control that is using the LocExtension
             object targetObject = (serviceProvider as IProvideValueTarget)?.TargetObject;
 
-            if (targetObject.GetType().Name == "SharedDp") // is extension used in a control template?
+            if (targetObject?.GetType().Name == "SharedDp") // is extension used in a control template?
                 return targetObject; // required for template re-binding
 
             string baseName = GetResourceManager(targetObject)?.BaseName ?? string.Empty;
